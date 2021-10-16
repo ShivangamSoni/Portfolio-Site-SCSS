@@ -268,7 +268,7 @@
           flex-direction: column;
 }
 
-footer {
+.about footer {
   -webkit-transform-origin: right;
           transform-origin: right;
   -webkit-transform: rotate(90deg) translateX(1rem);
