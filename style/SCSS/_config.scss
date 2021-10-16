@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$colors: (
+  primary: hsl(0, 0%, 15%),
+  secondary: hsl(16, 100%, 59%),
+  accent: hsl(196, 100%, 59%),
+  light: hsl(0, 0%, 100%),
+  dark: hsl(0, 0%, 0%),
+);
+@function getColor($name) {
+  @return map-get($colors, $name);
+}
+
+@mixin transition-ease($duration: 300ms, $delay: 0ms) {
+  transition: all $duration ease-in-out $delay;
+}
+
+@function setTextColor($color) {
+  @if (lightness($color) > 40%) {
+    @return getColor(dark);
+  } @else {
+    @return getColor(light);
+  }
+}

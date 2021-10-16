@@ -1,0 +1,120 @@
+.menu-btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  top: 1rem;
+  height: 20px;
+  width: 28px;
+  cursor: pointer;
+  @include transition-ease;
+
+  &__burger {
+    position: absolute;
+    right: 0;
+    top: 0.5rem;
+    width: 28px;
+    height: 3px;
+    background-color: setTextColor(getColor(primary));
+    @include transition-ease(1500ms);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      background-color: setTextColor(getColor(primary));
+      @include transition-ease(1000ms);
+    }
+
+    &::after {
+      top: 8px;
+      width: 60%;
+    }
+
+    &.open {
+      transform: rotate(720deg);
+      background-color: transparent;
+
+      &::before {
+        transform: rotate(45deg) translate(5px, 8px);
+      }
+      &::after {
+        width: 100%;
+        transform: rotate(-45deg) translate(3px, -7px);
+      }
+    }
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  opacity: 0.97;
+  visibility: hidden;
+
+  &.open {
+    visibility: visible;
+
+    .menu-nav {
+      transform: translateY(0);
+      &__item {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .menu-nav {
+    list-style: none;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: getColor(primary);
+    transform: translateY(-100%);
+    @include transition-ease(1000ms, 500ms);
+
+    &__item {
+      transform: translateX(-100vw);
+      @include transition-ease(700ms, 1100ms);
+
+      &.active {
+        pointer-events: none;
+        a {
+          color: getColor(accent);
+        }
+      }
+    }
+
+    &__link {
+      display: inline-block;
+      font-size: 2rem;
+      text-transform: uppercase;
+      padding: 2rem 0;
+      font-weight: 300;
+      @include transition-ease;
+
+      &:hover {
+        transform: translateX(0) scale(1.2);
+        color: getColor(secondary);
+      }
+    }
+  }
+}
+
+@for $i from 1 through 4 {
+  .menu-nav__item:nth-child(#{$i}) {
+    transition-delay: ($i * 100ms) + 1000ms;
+  }
+}
