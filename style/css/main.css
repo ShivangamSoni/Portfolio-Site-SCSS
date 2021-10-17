@@ -393,6 +393,49 @@
           transform: rotate(90deg) translateX(1rem);
 }
 
+.contact {
+  height: 100%;
+  padding-top: 40vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(38, 38, 38, 0.9)), to(rgba(38, 38, 38, 0.5))), url(../../image/model-1.jpg);
+  background-image: linear-gradient(to top, rgba(38, 38, 38, 0.9), rgba(38, 38, 38, 0.5)), url(../../image/model-1.jpg);
+  background-position: top center;
+  background-size: cover;
+}
+
+.contact h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.contact__list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.contact__list .text-secondary {
+  color: #2ec7ff;
+}
+
+.contact .social-icons {
+  position: initial;
+  margin-top: 2rem;
+}
+
 body {
   background-color: #262626;
   color: white;
